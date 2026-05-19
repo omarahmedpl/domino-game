@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DominoTile as DominoTileType } from '../../types';
-import DominoTile from './DominoTile';
+import DominoTileComponent from './DominoTile';
 
 interface GameBoardProps {
-  board: DominoTile[];
+  board: DominoTileType[];
   boardLeftEnd: number;
   boardRightEnd: number;
   onSelectSide?: (side: 'left' | 'right') => void;
@@ -45,7 +45,6 @@ export default function GameBoard({ board, boardLeftEnd, boardRightEnd, onSelect
       className="board-scroll flex items-center justify-start gap-0.5 h-full px-8 py-2"
       style={{ minHeight: 80 }}
     >
-      {/* Left end drop zone */}
       {selectedTile && canPlayLeft && (
         <motion.button
           initial={{ opacity: 0, x: -10 }}
@@ -67,7 +66,7 @@ export default function GameBoard({ board, boardLeftEnd, boardRightEnd, onSelect
             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
             className="flex-shrink-0"
           >
-            <DominoTile
+            <DominoTileComponent
               tile={tile}
               orientation="horizontal"
               size="md"
@@ -76,7 +75,6 @@ export default function GameBoard({ board, boardLeftEnd, boardRightEnd, onSelect
         ))}
       </AnimatePresence>
 
-      {/* Right end drop zone */}
       {selectedTile && canPlayRight && (
         <motion.button
           initial={{ opacity: 0, x: 10 }}
