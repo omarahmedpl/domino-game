@@ -12,7 +12,6 @@ export interface PlayerState {
   passCount: number;
 }
 
-
 export interface GameState {
   board: DominoTile[];
   boardLeftEnd: number;
